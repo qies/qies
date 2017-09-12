@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Qies.Framework", "Qies.Framework\Qies.Framework.njsproj", "{AE7FB6B9-009F-42E5-BEA3-9DD92EE741E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Git", "Git", "{4305C16E-D29C-4C20-94DD-0CEF884DC82B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE7FB6B9-009F-42E5-BEA3-9DD92EE741E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7FB6B9-009F-42E5-BEA3-9DD92EE741E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7FB6B9-009F-42E5-BEA3-9DD92EE741E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7FB6B9-009F-42E5-BEA3-9DD92EE741E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E1B7253-56AF-48D5-9EC9-E4D13FB257CE}
+	EndGlobalSection
+EndGlobal
