@@ -39,12 +39,12 @@ exports.handler = async (event: any, context: any, callback: any) => {
         });
 
         try {
-            await streamManager.createStream(streamId, key, aggregateType, tableName);
-            await sequenceNumberSyncronizer.syncronize(dynamoKey, sequenceNumber, tableName);
+            await streamManager.createStream(streamId, key, aggregateType, approximateCreationDateTime, tableName);
+            await sequenceNumberSyncronizer.syncronize(dynamoKey, sequenceNumber, approximateCreationDateTime, tableName);
 
             executedCount++;
             if (executedCount >= insertRecords.length) {
-                callback(null, "ok")
+                callback(null, "ok");
             }
         } catch (err) {
             callback(err, null);

@@ -4,21 +4,25 @@ export class SequenceNumberSyncronizer {
     constructor(private dynamodb: AWS.DynamoDB) {
     }
 
-    public async syncronize(key: any, sequenceNumber: string, tableName: string) : Promise<void> {
+    public async syncronize(key: any, sequenceNumber: string, createdTime: number, tableName: string) : Promise<void> {
         var params = {
             ExpressionAttributeNames: {
                 "#SequenceNumber": "SequenceNumber",
-                "#Created": "Created"
+                "#Created": "Created",
+                "#EntryType": "EntryType"
             },
             ExpressionAttributeValues: {
                 ":SequenceNumber": {
                     S: sequenceNumber
                 },
-                ":Now": {
-                    N: Date.now().toString()
+                ":CreateTime": {
+                    N: createdTime.toString()
+                },
+                ":EntryType": {
+                    S: "Event"
                 }
             },
-            UpdateExpression: "SET #SequenceNumber = :SequenceNumber, #Created = :Now",
+            UpdateExpression: "SET #SequenceNumber = :SequenceNumber, #Created = :CreateTime, #EntryType = :EntryType",
             Key: key,
             TableName: tableName,
             ReturnValues: 'NONE'

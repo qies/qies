@@ -5,7 +5,7 @@
         console.log("Stream manager created");
     }
 
-    public async createStream(streamId: string, key: string, aggregateType: string, tableName: string): Promise<void> {
+    public async createStream(streamId: string, key: string, aggregateType: string, createdTime: number, tableName: string): Promise<void> {
         console.log(JSON.stringify(this.createdStreams));
         if (this.createdStreams.indexOf(streamId) >= 0)
             return;
@@ -15,20 +15,24 @@
                 "#Id": "Id",
                 "#Key": "Key",
                 "#Created": "Created",
-                "#AggregateType": "AggregateType"
+                "#AggregateType": "AggregateType",
+                "#EntryType": "EntryType"
             },
             ExpressionAttributeValues: {
                 ":Key": {
                     S: key
                 },
                 ":Created": {
-                    N: Date.now().toString()
+                    N: createdTime.toString()
                 },
                 ":AggregateType": {
                     S: aggregateType
+                },
+                ":EntryType": {
+                    S: "Stream"
                 }
             },
-            UpdateExpression: "SET #Key = :Key, #Created = :Created, #AggregateType = :AggregateType",
+            UpdateExpression: "SET #Key = :Key, #Created = :Created, #AggregateType = :AggregateType, #EntryType = :EntryType",
             Key: {
                 "Id": {
                     S: streamId
